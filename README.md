@@ -23,11 +23,11 @@ Les remontées de donnees et d'informations se font en utilisant un systeme de P
 J'ai mis quelques commentaires dans le code pour que ce soit faicile a comprendre
 
 J'ai fait le choix d'utiliser UIKit (La librairie systeme d'UI sur iOS) car pour le cadre fonctionnel c'est bien suffisant et je n'ai pas intégre de Librairies Tierces.
-les principaux models : 
-    - Cell (Une case)
-    - Grid (La grille qui contient les cells)
-    - CellType (un enum Swift qui vaut `empty` ou `bomb`)
-    - CellState (un enum qui indique si la Cell est `flagged`, `discovered` ou `hidden`
+###les principaux models : 
+- Cell (Une case)    
+- Grid (La grille qui contient les cells)
+- CellType (un enum Swift qui vaut `empty` ou `bomb`)
+- CellState (un enum qui indique si la Cell est `flagged`, `discovered` ou `hidden`
     
 ## Ameliorations Possibles 
 - Ameliorer l'UI
