@@ -1,14 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="digital-7.ttf">
+            <string>Digital-7Mono</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="MadMineSweepper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +28,209 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P5Y-Em-eVY">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hp6-VS-NtJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-mK-VFs">
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="50"/>
+                                                <state key="normal" title="Recommencer !"/>
+                                                <connections>
+                                                    <action selector="newGameTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NhO-ND-zDT"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="240" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfY-Vo-o9a">
+                                                <rect key="frame" x="108" y="0.0" width="159" height="50"/>
+                                                <fontDescription key="fontDescription" name="Digital-7Mono" family="Digital-7" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6V0-vp-PkQ">
+                                                <rect key="frame" x="267" y="0.0" width="108" height="50"/>
+                                                <color key="tintColor" red="0.098039217293262482" green="0.36078432202339172" blue="0.65882354974746704" alpha="1" colorSpace="calibratedRGB"/>
+                                                <connections>
+                                                    <segue destination="nv2-Wf-kVj" kind="presentation" modalTransitionStyle="flipHorizontal" id="0r9-VI-f0O"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Jwr-ng-iLv"/>
+                                            <constraint firstItem="gfY-Vo-o9a" firstAttribute="centerX" secondItem="Hp6-VS-NtJ" secondAttribute="centerX" id="QvF-aU-UNq"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cbT-G1-YUa" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="469"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8p2-Y2-kLg" customClass="GridView" customModule="MadMineSweepper" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="47.5" width="375" height="374"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="8p2-Y2-kLg" secondAttribute="height" constant="1" id="RAn-3Q-fvi"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Mj8-AT-ksM">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CellView" id="st0-sr-VXY" customClass="CellView" customModule="MadMineSweepper" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jER-he-Jgx">
+                                                                    <rect key="frame" x="1" y="1" width="48.5" height="48.5"/>
+                                                                    <color key="backgroundColor" red="0.94509803920000002" green="0.44705882349999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLn-BY-o4s">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <connections>
+                                                                        <action selector="cellTapped:" destination="st0-sr-VXY" eventType="touchUpInside" id="NCb-KK-rG9"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </view>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="zLn-BY-o4s" secondAttribute="trailing" id="CCs-gX-biJ"/>
+                                                            <constraint firstItem="zLn-BY-o4s" firstAttribute="top" secondItem="st0-sr-VXY" secondAttribute="top" id="Te0-nH-Sf2"/>
+                                                            <constraint firstItem="jER-he-Jgx" firstAttribute="centerY" secondItem="st0-sr-VXY" secondAttribute="centerY" id="VIW-qV-8Hp"/>
+                                                            <constraint firstItem="jER-he-Jgx" firstAttribute="height" secondItem="st0-sr-VXY" secondAttribute="height" multiplier="0.97" id="cbz-Ib-guu"/>
+                                                            <constraint firstItem="jER-he-Jgx" firstAttribute="centerX" secondItem="st0-sr-VXY" secondAttribute="centerX" id="d48-g6-fvK"/>
+                                                            <constraint firstItem="zLn-BY-o4s" firstAttribute="leading" secondItem="st0-sr-VXY" secondAttribute="leading" id="kea-ES-bUL"/>
+                                                            <constraint firstAttribute="bottom" secondItem="zLn-BY-o4s" secondAttribute="bottom" id="pit-pu-ugb"/>
+                                                            <constraint firstItem="jER-he-Jgx" firstAttribute="width" secondItem="st0-sr-VXY" secondAttribute="width" multiplier="0.97" id="uqs-km-3N1"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="label" destination="jER-he-Jgx" id="idr-PB-tRb"/>
+                                                        </connections>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="8p2-Y2-kLg" firstAttribute="centerY" secondItem="cbT-G1-YUa" secondAttribute="centerY" id="uBb-d8-frn"/>
+                                            <constraint firstItem="8p2-Y2-kLg" firstAttribute="centerX" secondItem="cbT-G1-YUa" secondAttribute="centerX" id="wsb-Pp-9fu"/>
+                                            <constraint firstItem="8p2-Y2-kLg" firstAttribute="width" secondItem="cbT-G1-YUa" secondAttribute="width" id="zbF-XU-0WF"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRn-1t-eoM">
+                                        <rect key="frame" x="0.0" y="519" width="375" height="128"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otj-uW-dvA">
+                                                <rect key="frame" x="156.5" y="34" width="61" height="60"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="otj-uW-dvA" secondAttribute="height" multiplier="1:1" constant="1" id="lix-eB-DrV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <state key="normal" title="🚩">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="flagButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QCT-le-7WQ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="KuE-bO-fZb"/>
+                                            <constraint firstItem="otj-uW-dvA" firstAttribute="centerX" secondItem="lRn-1t-eoM" secondAttribute="centerX" id="PxA-fP-LcV"/>
+                                            <constraint firstItem="otj-uW-dvA" firstAttribute="centerY" secondItem="lRn-1t-eoM" secondAttribute="centerY" id="z9U-Ut-1wU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P5Y-Em-eVY" secondAttribute="bottom" id="NWP-GL-BSo"/>
+                            <constraint firstItem="P5Y-Em-eVY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="QUZ-xS-WIc"/>
+                            <constraint firstAttribute="trailing" secondItem="P5Y-Em-eVY" secondAttribute="trailing" id="ZqU-vA-oMd"/>
+                            <constraint firstItem="P5Y-Em-eVY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iv4-Ly-jsg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="flagButton" destination="otj-uW-dvA" id="B97-nE-eWY"/>
+                        <outlet property="gridView" destination="8p2-Y2-kLg" id="7BR-ls-6kp"/>
+                        <outlet property="timeLabel" destination="gfY-Vo-o9a" id="IvM-M0-YkT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="XgC-bp-FVH">
+            <objects>
+                <viewController id="nv2-Wf-kVj" customClass="InfoViewController" customModule="MadMineSweepper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nnq-N4-q0d"/>
+                        <viewControllerLayoutGuide type="bottom" id="KjK-bd-SbB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fer-Tx-z1m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="suY-yN-pWL">
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c4N-ci-JVP">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="577"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <string key="text">
+Règle du Jeu du Démineur 💣:
+Vous disposez d'une grille contenant des mines cachées. 
+
+En cliquant sur une case vous connaissez le nombre de mines se trouvant dans les cases ( 8 au maximum) qui l'entourent.
+
+Le but du jeu est de détecter toutes les mines sans cliquer dessus. Si vous avez deviné la position d'une mine vous pouvez la signaler en tappant sur "🚩" puis sur la case en question. 
+Vous perdez si vous découvrez une 💣
+VICTOIRE : 
+Vous gagnez si : 
+- Vous avez mis un 🚩sur toutes les mines (et seulement les mines) 
+- Ou si vous avez révélé toutes les cases qui ne sont pas des 💣 
+</string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Papyrus-Condensed" family="Papyrus" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inL-La-ykT">
+                                        <rect key="frame" x="0.0" y="577" width="343" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="4Vz-TD-UcK"/>
+                                        </constraints>
+                                        <state key="normal" title="Ok, J'ai compris !"/>
+                                        <connections>
+                                            <action selector="dismissTappedWithSender:" destination="nv2-Wf-kVj" eventType="touchUpInside" id="4DW-hO-lmB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="suY-yN-pWL" firstAttribute="leading" secondItem="fer-Tx-z1m" secondAttribute="leadingMargin" id="KcM-DH-zGf"/>
+                            <constraint firstItem="suY-yN-pWL" firstAttribute="trailing" secondItem="fer-Tx-z1m" secondAttribute="trailingMargin" id="OAk-u7-gJz"/>
+                            <constraint firstItem="KjK-bd-SbB" firstAttribute="top" secondItem="suY-yN-pWL" secondAttribute="bottom" id="use-9z-hTZ"/>
+                            <constraint firstItem="suY-yN-pWL" firstAttribute="top" secondItem="Nnq-N4-q0d" secondAttribute="bottom" id="zFi-a6-MgT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8y-Br-WMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="-31.03448275862069"/>
+        </scene>
     </scenes>
+    <color key="tintColor" red="0.92549020051956177" green="0.28235295414924622" blue="0.23921568691730499" alpha="1" colorSpace="calibratedRGB"/>
 </document>
