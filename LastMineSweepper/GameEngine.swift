@@ -78,9 +78,4 @@ class GameEngine {
 
 }
 
-protocol GameEngineDelegate {
 
-    func didLoose()
-    func didWin(time: TimeInterval)
-    
-}

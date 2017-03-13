@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-protocol SelectedCellDelegate {
-    func cellSelected(cell: Cell) -> Void
-}
+
 class CellView: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     var cell: Cell!
